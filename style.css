@@ -1,0 +1,881 @@
+:root {
+    /* Paleta de Colores Extraída */
+    --color-vinho: #7a1734;
+    --color-carmim: #da849b;
+    --color-carmim-claro: #f3e7ea;
+    --color-verde: #c7d784;
+    --color-cinza: #e4dac6;
+    --color-white: #ffffff;
+
+    /* Fuentes inspiradas en la referencia */
+    --font-serif: 'Instrument Serif', serif;
+    --font-bold: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-carmim-claro);
+    color: var(--color-vinho);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+/* ==========================================
+   BARRA DE NAVEGACIÓN FLOTANTE (ORGANIZADA & LIMPIA)
+   ========================================== */
+
+.navbar-wrapper {
+    position: fixed;
+    top: 1.5rem;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 1.5rem;
+    pointer-events: none;
+}
+
+.navbar-container {
+    pointer-events: auto;
+    background: rgba(243, 231, 234, 0.85); /* Carmim claro traslúcido */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    padding: 0.7rem 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa en 3 zonas: Izq, Centro, Der */
+    box-shadow: 0 15px 35px rgba(122, 23, 52, 0.12);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Logo VNSSA. con Punto Verde */
+.nav-brand {
+    font-family: var(--font-bold);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-vinho);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.dot-green {
+    color: var(--color-verde);
+    font-size: 1.5rem;
+}
+
+/* Enlaces Centrados */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    font-family: var(--font-bold);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--color-vinho);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 0.2rem 0;
+    transition: color 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-vinho);
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Botón Verde Flotante / Status Unificado */
+.nav-cta-btn {
+    background-color: var(--color-verde);
+    color: var(--color-vinho);
+    font-family: var(--font-bold);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.65rem 1.3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 15px rgba(199, 215, 132, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.nav-cta-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Punto Titilante en el Botón Verde */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-vinho);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulseDotVinho 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseDotVinho {
+    0% { transform: scale(0.95); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(0.95); opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+    .nav-links {
+        display: none;
+    }
+}
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+/* Tipografía de Título Superpuesta */
+.hero-title-wrapper {
+    text-align: center;
+    z-index: 1;
+    margin-bottom: -60px; /* Hace que la imagen quede por encima */
+}
+
+.title-serif {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-style: italic;
+    color: var(--color-vinho);
+    line-height: 0.9;
+}
+
+.title-bold {
+    font-family: var(--font-bold);
+    font-size: 7.5rem;
+    font-weight: 800;
+    color: var(--color-vinho);
+    line-height: 0.85;
+    letter-spacing: -2px;
+}
+
+/* Imagen y Botón CTA Central */
+.hero-image-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero-img {
+    max-width: 420px;
+    height: auto;
+    display: block;
+    /* Sombrefeado suave para despegar la imagen del fondo */
+    filter: drop-shadow(0 15px 30px rgba(122, 23, 52, 0.15));
+}
+
+.btn-cta-hero {
+    position: absolute;
+    bottom: 20px;
+    background-color: var(--color-verde);
+    color: var(--color-vinho);
+    font-family: var(--font-bold);
+    font-weight: 800;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(199, 215, 132, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.btn-cta-hero:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(199, 215, 132, 0.6);
+}
+
+/* Info lateral del Hero */
+.hero-footer-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2rem;
+    z-index: 3;
+}
+
+.info-block {
+    max-width: 280px;
+}
+
+.tagline {
+    font-family: var(--font-bold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: var(--color-vinho);
+}
+
+.desc {
+    font-size: 0.85rem;
+    color: var(--color-vinho);
+    opacity: 0.85;
+    line-height: 1.4;
+    text-align: right;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Luego activaremos menú hamburguesa */
+    }
+    
+    .title-serif {
+        font-size: 3rem;
+    }
+
+    .title-bold {
+        font-size: 3.8rem;
+    }
+
+    .hero-title-wrapper {
+        margin-bottom: -30px;
+    }
+
+    .hero-img {
+        max-width: 280px;
+    }
+
+    .hero-footer-info {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .desc {
+        text-align: center;
+    }
+
+    .info-block {
+        max-width: 100%;
+    }
+}
+
+
+/* ==========================================
+   SECCIÓN 2: SOBRE MÍ (FONDO VINHO OSCURO)
+   ========================================== */
+
+.about-section-dark {
+    padding: 6rem 0;
+    background-color: var(--color-vinho) !important; /* Fuerza el fondo Vinho #7A1734 */
+    color: var(--color-carmim-claro);
+    position: relative;
+    width: 100%;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Tarjeta del Avatar con Glassmorphism sobre fondo oscuro */
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-card-glass-dark {
+    background: rgba(243, 231, 234, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+}
+
+.about-avatar-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Textos adaptados para el contraste */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.section-tag-green {
+    font-family: var(--font-bold);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--color-verde) !important; /* Verde #C7D784 */
+    text-transform: uppercase;
+}
+
+.about-title-light {
+    font-family: var(--font-bold);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-carmim-claro) !important; /* Texto claro #F3E7EA */
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.title-serif-carmim {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-carmim) !important; /* Carmim #DA849B */
+    font-size: 3.2rem;
+    display: block;
+}
+
+.about-text-light {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-carmim-claro) !important;
+    opacity: 0.95;
+}
+
+/* Píldoras adaptadas al fondo oscuro */
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.tag-pill-dark {
+    background-color: rgba(243, 231, 234, 0.15);
+    color: var(--color-carmim-claro) !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tag-pill-dark:hover {
+    background-color: var(--color-verde);
+    color: var(--color-vinho) !important;
+    border-color: var(--color-verde);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-title-light {
+        font-size: 2.2rem;
+    }
+
+    .title-serif-carmim {
+        font-size: 2.4rem;
+    }
+}
+/* ==========================================
+   SECCIÓN 3: SHOWCASE ATREVIDO (MONUMENTAL Y HASH DESALINEADO)
+   ========================================== */
+
+/* ==========================================
+   SECCIÓN 3: SHOWCASE ATREVIDO (RESPONSIVO Y FLUIDO)
+   ========================================== */
+
+.videos-section-bold {
+    width: 100%;
+    background-color: var(--color-verde);
+    position: relative;
+    overflow: hidden; /* Evita cualquier desborde horizontal */
+}
+
+.videos-hero-banner {
+    padding: clamp(6rem, 10vw, 12rem) 0 clamp(8rem, 12vw, 15rem) 0;
+    position: relative;
+}
+
+.relative-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.bold-title-wrapper {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+}
+
+/* Hashtag Sticker con tamaño fluido (Mantiene tus valores exactos) */
+.hashtag-symbol-absolute {
+    position: absolute;
+    top: clamp(-40px, -4vw, -60px); /* Ajuste de altura dinámico */
+    left: clamp(10%, 18%, 22%); /* Mantiene tu 18% como punto medio */
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+    font-size: clamp(6rem, 11vw, 13rem); /* Escala desde 6rem hasta tus 13rem */
+    font-weight: 900;
+    color: var(--color-carmim);
+    display: inline-block;
+    transform: rotate(-15deg);
+    z-index: 5;
+    pointer-events: none;
+    line-height: 1;
+    text-shadow: 4px 4px 0px rgba(122, 23, 52, 0.12);
+}
+
+/* Tipografía Mega Línea con Clamp (Máxima escala sin cortarse) */
+.title-mega-line {
+    font-family: var(--font-bold);
+    /* Se escala dinámicamente según el ancho de la pantalla */
+    font-size: clamp(3.8rem, 8.2vw, 9.5rem); 
+    font-weight: 800;
+    color: var(--color-vinho) !important;
+    line-height: 0.85;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    white-space: nowrap; /* Evita saltos de línea extraños */
+}
+
+/* Tarjetas Glass Flotantes Responsivas */
+.glass-float-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 24px;
+    padding: clamp(0.6rem, 1vw, 1.1rem) clamp(1rem, 1.8vw, 2rem);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 20px 45px rgba(122, 23, 52, 0.22);
+    z-index: 10;
+}
+
+/* Posicionamiento porcentual para adaptarse a cualquier resolución */
+.card-left {
+    top: 28%;
+    left: 8%;
+    transform: rotate(-9deg);
+}
+
+.card-right {
+    bottom: 12%;
+    right: 8%;
+    transform: rotate(8deg);
+}
+
+.avatar-mini-circle {
+    width: clamp(40px, 4vw, 60px);
+    height: clamp(40px, 4vw, 60px);
+    border-radius: 50%;
+    background-color: var(--color-carmim-claro);
+    overflow: hidden;
+    border: 2.5px solid var(--color-vinho);
+    flex-shrink: 0;
+}
+
+.avatar-mini-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.glass-card-tag {
+    font-family: var(--font-bold);
+    font-size: clamp(0.85rem, 1vw, 1.15rem);
+    color: var(--color-vinho);
+    white-space: nowrap;
+}
+
+/* Bloque Inferior Claro Curveado */
+.videos-grid-wrapper {
+    background-color: var(--color-carmim-claro);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding: 6rem 0 7rem 0;
+    margin-top: -3rem;
+    position: relative;
+    z-index: 4;
+}
+
+.videos-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.video-card-modern {
+    background: var(--color-white);
+    border-radius: 28px;
+    padding: 1.8rem;
+    border: 1px solid rgba(122, 23, 52, 0.08);
+    box-shadow: 0 15px 35px rgba(122, 23, 52, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.video-card-modern:hover {
+    transform: translateY(-8px);
+}
+
+.card-head-info h3 {
+    font-family: var(--font-bold);
+    font-size: 1.3rem;
+    color: var(--color-vinho);
+    margin-bottom: 0.4rem;
+}
+
+.card-head-info p {
+    font-size: 0.9rem;
+    color: var(--color-vinho);
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.video-viewport-916 {
+    width: 100%;
+    height: 420px;
+    background: linear-gradient(135deg, var(--color-vinho), #520f23);
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.play-pill {
+    background-color: var(--color-carmim-claro);
+    color: var(--color-vinho);
+    font-family: var(--font-bold);
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 0.7rem 1.4rem;
+    border-radius: 50px;
+}
+
+.pill-green {
+    background-color: var(--color-verde);
+    color: var(--color-vinho);
+    font-family: var(--font-bold);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* Responsivo para celulares y pantallas muy angostas */
+@media (max-width: 900px) {
+    .videos-grid-three {
+        grid-template-columns: 1fr;
+    }
+    .glass-float-card {
+        display: none; /* En móviles se ocultan para no tapar el texto */
+    }
+}
+/* ==========================================
+   SECCIÓN 4: PROCESO CREATIVO (FONDO VINHO)
+   ========================================== */
+
+.proceso-section {
+    padding: 7rem 0 4rem 0;
+    background-color: var(--color-vinho);
+    width: 100%;
+}
+
+.proceso-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.proceso-tag {
+    font-family: var(--font-bold);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--color-verde);
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.proceso-title {
+    font-family: var(--font-bold);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 800;
+    color: var(--color-carmim-claro);
+    line-height: 1.1;
+}
+
+.proceso-title .title-serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-verde);
+}
+
+.proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.proceso-card {
+    background: rgba(243, 231, 234, 0.05);
+    border: 1px solid rgba(243, 231, 234, 0.12);
+    border-radius: 24px;
+    padding: 2.2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.proceso-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-verde);
+}
+
+.step-num {
+    font-family: var(--font-bold);
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--color-verde);
+    display: block;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.proceso-card h3 {
+    font-family: var(--font-bold);
+    font-size: 1.3rem;
+    color: var(--color-carmim-claro);
+    margin-bottom: 0.8rem;
+}
+
+.proceso-card p {
+    font-size: 0.95rem;
+    color: var(--color-carmim-claro);
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   CINTA / MARQUEE DE MARCA (ESTILO TAPE)
+   ========================================== */
+
+.brand-marquee-wrapper {
+    background-color: var(--color-vinho);
+    padding: 2rem 0 4rem 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.brand-marquee {
+    background-color: var(--color-verde);
+    color: var(--color-vinho);
+    padding: 1.1rem 0;
+    width: 105%;
+    margin-left: -2.5%;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 22s linear infinite;
+    font-family: var(--font-bold);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+}
+
+.marquee-track span {
+    padding-right: 2rem;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================
+   SECCIÓN 5: FOOTER DE CONTACTO (VINHO OFICIAL)
+   ========================================== */
+
+.contact-footer {
+    background-color: var(--color-vinho); /* Estrictamente nuestro brand book */
+    padding: 4rem 0 3rem 0;
+    border-top: 1px solid rgba(243, 231, 234, 0.15);
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-tag {
+    font-family: var(--font-bold);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--color-verde);
+    margin-bottom: 1rem;
+}
+
+.footer-title {
+    font-family: var(--font-bold);
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    font-weight: 800;
+    color: var(--color-carmim-claro);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+}
+
+.footer-highlight {
+    color: var(--color-verde);
+}
+
+.footer-subtext {
+    font-size: 1.1rem;
+    color: var(--color-carmim-claro);
+    opacity: 0.9;
+    max-width: 550px;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+}
+
+.footer-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary-green {
+    background-color: var(--color-verde);
+    color: var(--color-vinho);
+    font-family: var(--font-bold);
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 1.1rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary-green:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(199, 215, 132, 0.3);
+}
+
+.btn-secondary-carmim {
+    background-color: transparent;
+    color: var(--color-carmim-claro);
+    border: 2px solid var(--color-carmim-claro);
+    font-family: var(--font-bold);
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 1.1rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-secondary-carmim:hover {
+    background-color: rgba(243, 231, 234, 0.1);
+    transform: scale(1.05);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(243, 231, 234, 0.15);
+    padding-top: 2rem;
+    width: 100%;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--color-carmim-claro);
+    opacity: 0.6;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .proceso-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+}
