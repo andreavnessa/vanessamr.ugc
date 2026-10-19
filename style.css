@@ -304,16 +304,16 @@ body {
         max-width: 100%;
     }
 }/* ==========================================
-   HERO SECTION EDITORIAL BRUTALISTA (RESPONSIVO REAL)
+   HERO SECTION BRUTALISTA DEFINITIVO (ESCRITORIO & MÓVIL)
    ========================================== */
 
 .hero {
     position: relative;
-    min-height: 92vh;
+    min-height: 95vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-top: 5rem;
+    padding-top: 6rem;
     padding-bottom: 2rem;
     overflow: hidden;
     width: 100%;
@@ -322,39 +322,35 @@ body {
 .hero-container {
     position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
 }
 
-/* Capa 1: Texto Gigante de Fondo */
+/* Capa de Texto de Fondo */
 .hero-text-bg {
     position: absolute;
-    top: 46%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Detrás de la foto */
+    z-index: 1;
     pointer-events: none;
-    box-sizing: border-box;
-    padding: 0 1rem;
 }
 
-/* Fila Superior: "I'm" pegadita a ti y "UGC" a la derecha */
-/* Fila Superior: "I'm" y "UGC" alineados de forma relativa al tamaño de la pantalla */
 .hero-top-row {
     width: 100%;
-    max-width: clamp(480px, 42vw, 680px); /* Escala exactamente junto con tu foto */
-    display: flex !important;
-    justify-content: space-between !important;
+    max-width: 620px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: -1rem;
-    padding: 0;
+    padding: 0 1rem;
 }
 
 .title-serif {
@@ -364,7 +360,7 @@ body {
     color: var(--color-vinho);
     font-weight: 400;
     line-height: 1;
-    transform: translateX(3%); /* Mantiene el texto pegado a tu cuello en cualquier pantalla */
+    transform: translateX(3%);
 }
 
 .title-bold {
@@ -374,15 +370,13 @@ body {
     font-weight: 800;
     line-height: 1;
     letter-spacing: -1px;
-    transform: translateX(8%); /* Mantiene UGC libre de tu cabeza en cualquier pantalla */
+    transform: translateX(8%);
 }
 
-/* CREATOR: Ajustado para NUNCA desbordar en laptops ni verse minúsculo en monitores */
 .title-huge {
     display: block;
     font-family: var(--font-bold);
-    /* Se limita a un máximo de 10.5vw para garantizar que no se corte la R */
-    font-size: clamp(3.2rem, 10.2vw, 9.8rem);
+    font-size: clamp(4rem, 11.5vw, 11rem);
     font-weight: 800;
     color: var(--color-vinho);
     letter-spacing: -2px;
@@ -394,13 +388,12 @@ body {
     white-space: nowrap;
 }
 
-/* Capa 2: Foto Transparente al Centro */
+/* Capa de la Imagen */
 .hero-image-container {
     position: relative;
-    z-index: 2; /* Por encima del texto de fondo */
+    z-index: 2;
     width: 100%;
-    /* Garantiza presencia imponente tanto en laptop chica como en monitores grandes */
-    max-width: clamp(380px, 36vw, 580px);
+    max-width: clamp(360px, 40vw, 580px);
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -410,25 +403,23 @@ body {
 .hero-person-img {
     width: 100%;
     height: auto;
-    /* Mantiene tamaño proporcional a la altura del viewport */
-    max-height: clamp(520px, 76vh, 820px);
+    max-height: 78vh;
     object-fit: contain;
     display: block;
-    /* Transición de degradado en la base */
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
 }
 
-/* Capa 3: Subtexto y Botón CTA al Centro (Al frente) */
+/* Capa del Frente (Descripción y Botón) */
 .hero-front-content {
     position: relative;
-    z-index: 3; /* Por encima de la foto */
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1.1rem;
-    margin-top: -3.8rem; /* Se monta ligeramente sobre la franja inferior de la franela */
+    margin-top: -3.5rem;
     width: 100%;
     max-width: 520px;
     padding: 0 1rem;
@@ -469,25 +460,62 @@ body {
     box-shadow: 0 15px 35px rgba(218, 132, 155, 0.35);
 }
 
-/* Ajustes Responsivos Especiales para Laptops Chicas y Tablets */
-@media (max-width: 1100px) {
-    .title-huge {
-        font-size: clamp(3rem, 9.5vw, 8.5rem);
-    }
-}
-
+/* ==========================================
+   ADAPTACIÓN MÓVIL ESPECÍFICA (< 768px)
+   ========================================== */
 @media (max-width: 768px) {
+    .hero {
+        min-height: 90vh;
+        padding-top: 5rem;
+    }
+
+    .hero-text-bg {
+        top: 45%;
+    }
+
     .hero-top-row {
         max-width: 100%;
         padding: 0 0.5rem;
     }
 
+    .title-serif {
+        font-size: 2.8rem;
+        transform: none;
+    }
+
+    .title-bold {
+        font-size: 3rem;
+        transform: none;
+    }
+
+    .title-huge {
+        font-size: 13vw !important; /* Escala fluida exacta para que no se corte la R en teléfonos */
+        letter-spacing: -1px;
+        white-space: normal; /* Permite salto limpio si es necesario en pantallas muy estrechas */
+    }
+
     .hero-image-container {
-        max-width: 330px;
+        max-width: 290px;
+        margin-top: 0.5rem;
+    }
+
+    .hero-person-img {
+        max-height: 48vh;
     }
 
     .hero-front-content {
-        margin-top: -1.8rem;
+        margin-top: -1.5rem;
+        gap: 0.8rem;
+    }
+
+    .hero-description {
+        font-size: 0.72rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .hero-cta-btn {
+        font-size: 0.85rem;
+        padding: 0.8rem 2rem;
     }
 }
 /* ==========================================
