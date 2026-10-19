@@ -303,9 +303,193 @@ body {
     .info-block {
         max-width: 100%;
     }
+}/* ==========================================
+   HERO SECTION EDITORIAL BRUTALISTA (RESPONSIVO REAL)
+   ========================================== */
+
+.hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    overflow: hidden;
+    width: 100%;
 }
 
+.hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
 
+/* Capa 1: Texto Gigante de Fondo */
+.hero-text-bg {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Detrás de la foto */
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+
+/* Fila Superior: "I'm" pegadita a ti y "UGC" a la derecha */
+/* Fila Superior: "I'm" y "UGC" alineados de forma relativa al tamaño de la pantalla */
+.hero-top-row {
+    width: 100%;
+    max-width: clamp(480px, 42vw, 680px); /* Escala exactamente junto con tu foto */
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+    margin-bottom: -1rem;
+    padding: 0;
+}
+
+.title-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+    color: var(--color-vinho);
+    font-weight: 400;
+    line-height: 1;
+    transform: translateX(3%); /* Mantiene el texto pegado a tu cuello en cualquier pantalla */
+}
+
+.title-bold {
+    font-family: var(--font-bold);
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    color: var(--color-carmim);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    transform: translateX(8%); /* Mantiene UGC libre de tu cabeza en cualquier pantalla */
+}
+
+/* CREATOR: Ajustado para NUNCA desbordar en laptops ni verse minúsculo en monitores */
+.title-huge {
+    display: block;
+    font-family: var(--font-bold);
+    /* Se limita a un máximo de 10.5vw para garantizar que no se corte la R */
+    font-size: clamp(3.2rem, 10.2vw, 9.8rem);
+    font-weight: 800;
+    color: var(--color-vinho);
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    line-height: 0.85;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+}
+
+/* Capa 2: Foto Transparente al Centro */
+.hero-image-container {
+    position: relative;
+    z-index: 2; /* Por encima del texto de fondo */
+    width: 100%;
+    /* Garantiza presencia imponente tanto en laptop chica como en monitores grandes */
+    max-width: clamp(380px, 36vw, 580px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 1rem;
+}
+
+.hero-person-img {
+    width: 100%;
+    height: auto;
+    /* Mantiene tamaño proporcional a la altura del viewport */
+    max-height: clamp(520px, 76vh, 820px);
+    object-fit: contain;
+    display: block;
+    /* Transición de degradado en la base */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
+}
+
+/* Capa 3: Subtexto y Botón CTA al Centro (Al frente) */
+.hero-front-content {
+    position: relative;
+    z-index: 3; /* Por encima de la foto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+    margin-top: -3.8rem; /* Se monta ligeramente sobre la franja inferior de la franela */
+    width: 100%;
+    max-width: 520px;
+    padding: 0 1rem;
+}
+
+.hero-description {
+    font-family: var(--font-bold);
+    font-size: clamp(0.75rem, 1vw, 0.88rem);
+    line-height: 1.4;
+    color: var(--color-vinho);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: rgba(243, 231, 234, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.hero-cta-btn {
+    background-color: var(--color-vinho);
+    color: var(--color-carmim-claro);
+    font-family: var(--font-bold);
+    font-size: 0.9rem;
+    font-weight: 800;
+    padding: 0.95rem 2.4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 12px 30px rgba(122, 23, 52, 0.25);
+}
+
+.hero-cta-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    background-color: var(--color-carmim);
+    box-shadow: 0 15px 35px rgba(218, 132, 155, 0.35);
+}
+
+/* Ajustes Responsivos Especiales para Laptops Chicas y Tablets */
+@media (max-width: 1100px) {
+    .title-huge {
+        font-size: clamp(3rem, 9.5vw, 8.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-top-row {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .hero-image-container {
+        max-width: 330px;
+    }
+
+    .hero-front-content {
+        margin-top: -1.8rem;
+    }
+}
 /* ==========================================
    SECCIÓN 2: SOBRE MÍ (FONDO VINHO OSCURO)
    ========================================== */
@@ -432,9 +616,6 @@ body {
         font-size: 2.4rem;
     }
 }
-/* ==========================================
-   SECCIÓN 3: SHOWCASE ATREVIDO (MONUMENTAL Y HASH DESALINEADO)
-   ========================================== */
 
 /* ==========================================
    SECCIÓN 3: SHOWCASE ATREVIDO (RESPONSIVO Y FLUIDO)
@@ -866,16 +1047,163 @@ body {
     color: var(--color-carmim-claro);
     opacity: 0.6;
 }
+/* ==========================================
+   ADAPTACIÓN MÓVIL OPTIMIZADA (MAX-WIDTH: 768PX)
+   ========================================== */
 
-/* Responsivo */
 @media (max-width: 768px) {
+
+    /* --- 1. HEADER FLOTANTE MÓVIL --- */
+    .navbar-wrapper {
+        top: 0.8rem;
+        padding: 0 0.8rem;
+    }
+
+    .navbar-container {
+        padding: 0.6rem 1.2rem;
+        border-radius: 40px;
+    }
+
+    .nav-links {
+        display: none !important; /* Mantiene la barra limpia en pantallas pequeñas */
+    }
+
+    .nav-brand {
+        font-size: 1.15rem;
+    }
+
+    .nav-cta-btn {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.9rem;
+    }
+
+    /* --- 2. HERO SECTION MÓVIL --- */
+    .hero {
+        min-height: 100dvh; /* Dynamic Viewport Height para navegadores móviles */
+        padding-top: 5.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-container {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-text-bg {
+        position: relative; /* Cambia de absolute a relativo en móviles */
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin-bottom: -2.5rem; /* Permite superposición sutil con la foto */
+    }
+
+    .hero-top-row {
+        max-width: 100%;
+        justify-content: center !important;
+        gap: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .title-serif {
+        font-size: 2.8rem;
+        transform: none !important;
+    }
+
+    .title-bold {
+        font-size: 3rem;
+        transform: none !important;
+    }
+
+    .title-huge {
+        font-size: clamp(2.8rem, 14vw, 4.5rem) !important;
+        letter-spacing: -1px;
+    }
+
+    .hero-image-container {
+        max-width: 290px;
+        margin-top: 0;
+    }
+
+    .hero-person-img {
+        max-height: 48vh;
+    }
+
+    .hero-front-content {
+        margin-top: -1.5rem;
+        padding: 0 0.5rem;
+        gap: 0.9rem;
+    }
+
+    .hero-description {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        padding: 0.5rem 1rem;
+    }
+
+    .hero-cta-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        font-size: 0.85rem;
+        padding: 0.85rem 1.8rem;
+    }
+
+    /* --- 3. SECCIÓN SOBRE MÍ MÓVIL --- */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-title-light {
+        font-size: 2.1rem;
+    }
+
+    .title-serif-carmim {
+        font-size: 2.3rem;
+    }
+
+    .about-tags {
+        justify-content: center;
+    }
+
+    /* --- 4. SHOWCASE DE VIDEOS MÓVIL --- */
+    .videos-hero-banner {
+        padding: 4rem 0 6rem 0;
+    }
+
+    .title-mega-line {
+        font-size: clamp(2.8rem, 11vw, 4.5rem);
+    }
+
+    .videos-grid-three {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    .video-viewport-916 {
+        height: 380px;
+    }
+
+    /* --- 5. PROCESO Y FOOTER MÓVIL --- */
     .proceso-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    .footer-title {
+        font-size: 2.8rem;
+    }
+
     .footer-actions {
         flex-direction: column;
         width: 100%;
-        max-width: 300px;
+        padding: 0 1rem;
+    }
+
+    .btn-primary-green,
+    .btn-secondary-carmim {
+        width: 100%;
+        text-align: center;
     }
 }
