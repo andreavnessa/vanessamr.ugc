@@ -328,34 +328,35 @@ body {
     align-items: center;
 }
 
-/* Capa de Texto de Fondo (Superpuesta con absoluta precisión) */
+/* Capa de Texto de Fondo (Strictamente atrás con z-index: 1) */
 .hero-text-bg {
     position: absolute;
-    top: 42%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    max-width: 1000px; /* Contiene el ancho para que no se desborde */
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Detrás de la foto */
+    z-index: 1 !important; /* Forzado al fondo */
     pointer-events: none;
 }
 
 .hero-top-row {
     width: 100%;
-    max-width: 580px; /* Mantiene "I'm" y "UGC" enmarcando tu cabeza */
+    max-width: 520px; /* Acerca más "I'm" y "UGC" a tu cabeza */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: -1rem;
+    margin-bottom: -0.8rem;
     padding: 0 1rem;
 }
 
 .title-serif {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
     color: var(--color-vinho);
     font-weight: 400;
     line-height: 1;
@@ -363,19 +364,20 @@ body {
 
 .title-bold {
     font-family: var(--font-bold);
-    font-size: clamp(3.5rem, 7.5vw, 7rem);
+    font-size: clamp(3rem, 6.5vw, 6rem);
     color: var(--color-carmim);
     font-weight: 800;
     line-height: 1;
     letter-spacing: -1px;
 }
 
+/* CREATOR más estilizado y compacto para que encaje detrás de tus hombros */
 .title-huge {
     font-family: var(--font-bold);
-    font-size: clamp(4rem, 11vw, 10.5rem);
+    font-size: clamp(3.5rem, 9.5vw, 8.5rem); /* Reducido para que no sature */
     font-weight: 800;
     color: var(--color-vinho);
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     text-transform: uppercase;
     line-height: 0.85;
     margin: 0;
@@ -383,21 +385,21 @@ body {
     width: 100%;
 }
 
-/* Capa de la Imagen (Protagonista Central) */
+/* Capa de la Imagen (Forzada al frente con z-index superior) */
 .hero-image-wrapper {
     position: relative;
-    z-index: 2; /* Por encima de los textos gigantes */
+    z-index: 5 !important; /* Obliga a la foto a estar sobre las letras */
     width: 100%;
-    max-width: 480px;
+    max-width: 440px;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 4rem; /* Desplaza la foto hacia abajo para solaparse con "CREATOR" */
 }
 
 .hero-person-img {
     width: 100%;
     height: auto;
-    max-height: 65vh;
+    max-height: 60vh;
     object-fit: contain;
     display: block;
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
