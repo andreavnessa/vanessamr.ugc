@@ -304,7 +304,7 @@ body {
         max-width: 100%;
     }
 }/* ==========================================
-   HERO SECTION FLEXBOX DEFINITIVO (CERO ABSOLUTOS)
+   HERO SECTION SUPERPUESTA (ESTILO EDITORIAL)
    ========================================== */
 
 .hero {
@@ -313,7 +313,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 7rem;
+    padding-top: 6rem;
     padding-bottom: 3rem;
     overflow: hidden;
     width: 100%;
@@ -322,88 +322,97 @@ body {
 .hero-container {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
-/* Bloque Superior: Títulos */
-.hero-header-block {
+/* Capa de Texto de Fondo (Superpuesta con absoluta precisión) */
+.hero-text-bg {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 2;
-    margin-bottom: -2rem; /* Acerca los títulos a la cabeza de forma natural */
+    z-index: 1; /* Detrás de la foto */
+    pointer-events: none;
 }
 
 .hero-top-row {
+    width: 100%;
+    max-width: 580px; /* Mantiene "I'm" y "UGC" enmarcando tu cabeza */
     display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-bottom: -0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -1rem;
+    padding: 0 1rem;
 }
 
 .title-serif {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
     color: var(--color-vinho);
     font-weight: 400;
+    line-height: 1;
 }
 
 .title-bold {
     font-family: var(--font-bold);
-    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-size: clamp(3.5rem, 7.5vw, 7rem);
     color: var(--color-carmim);
     font-weight: 800;
+    line-height: 1;
     letter-spacing: -1px;
 }
 
 .title-huge {
     font-family: var(--font-bold);
-    font-size: clamp(4.5rem, 12vw, 10rem);
+    font-size: clamp(4rem, 11vw, 10.5rem);
     font-weight: 800;
     color: var(--color-vinho);
     letter-spacing: -2px;
     text-transform: uppercase;
-    line-height: 0.9;
+    line-height: 0.85;
     margin: 0;
+    text-align: center;
     width: 100%;
 }
 
-/* Bloque Central: Foto */
+/* Capa de la Imagen (Protagonista Central) */
 .hero-image-wrapper {
     position: relative;
-    z-index: 1; /* Queda en medio de los textos */
+    z-index: 2; /* Por encima de los textos gigantes */
     width: 100%;
     max-width: 480px;
     display: flex;
     justify-content: center;
+    margin-top: 3rem;
 }
 
 .hero-person-img {
     width: 100%;
     height: auto;
-    max-height: 62vh;
+    max-height: 65vh;
     object-fit: contain;
     display: block;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
 }
 
-/* Bloque Inferior: Descripción y Botón */
+/* Capa Inferior: Descripción y Botón */
 .hero-footer-block {
     position: relative;
     z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
-    margin-top: -2.5rem; /* Superpone el texto con la base de la franela de forma estética */
+    gap: 1.1rem;
+    margin-top: -2rem; /* Se monta ligeramente sobre tu franela */
     width: 100%;
     max-width: 480px;
     padding: 0 1rem;
@@ -411,7 +420,7 @@ body {
 
 .hero-description {
     font-family: var(--font-bold);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     line-height: 1.4;
     color: var(--color-vinho);
     text-transform: uppercase;
@@ -420,19 +429,20 @@ body {
     background: rgba(243, 231, 234, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 0.7rem 1.4rem;
+    padding: 0.6rem 1.3rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     box-shadow: 0 10px 25px rgba(122, 23, 52, 0.08);
+    text-align: center;
 }
 
 .hero-cta-btn {
     background-color: var(--color-vinho);
     color: var(--color-carmim-claro);
     font-family: var(--font-bold);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 800;
-    padding: 0.95rem 2.4rem;
+    padding: 0.9rem 2.2rem;
     border-radius: 50px;
     text-decoration: none;
     transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
@@ -445,17 +455,41 @@ body {
     box-shadow: 0 15px 35px rgba(218, 132, 155, 0.35);
 }
 
-/* Adaptación fluida móvil automática */
+/* ==========================================
+   ADAPTACIÓN MÓVIL OPTIMIZADA (< 768px)
+   ========================================== */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 5.5rem;
+        padding-top: 5rem;
+        min-height: 90vh;
     }
+    
+    .hero-text-bg {
+        top: 38%;
+    }
+
     .hero-top-row {
-        gap: 1rem;
+        max-width: 100%;
+        padding: 0 0.5rem;
     }
+
+    .title-serif {
+        font-size: 2.5rem;
+    }
+
+    .title-bold {
+        font-size: 2.8rem;
+    }
+
+    .title-huge {
+        font-size: clamp(3.2rem, 13vw, 5rem);
+    }
+
     .hero-image-wrapper {
         max-width: 320px;
+        margin-top: 2rem;
     }
+
     .hero-footer-block {
         margin-top: -1.5rem;
     }
